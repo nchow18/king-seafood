@@ -1,0 +1,85 @@
+.top-grid {
+    display: grid;
+    grid-template-rows: 5rem 4rem;
+    height: 8 rem;
+    background-color: rgb(255, 157, 157);
+}
+
+.logo {
+    grid-row: 1 / span 1;
+    text-align: center;
+}
+
+.nav {
+    grid-row: 2 / span 1;
+    top: 5rem;
+    position: absolute;
+    right: 1rem;
+}
+
+.ul-nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none
+}
+
+a {
+    text-decoration: none;
+}
+
+.li-nav {
+    padding-left: 1rem;
+}
+
+/* CARD */
+
+#items {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+}
+
+#meat {
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 15rem;
+    height: 18rem;
+    background-color: rgb(238, 238, 255);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgb(193, 193, 193);
+    display: grid;
+    grid-template-rows: 55% 15% 15% 15%;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px black;
+}
+
+.picture {
+    grid-row: 1;
+}
+
+.item-name {
+    grid-row: 2;
+}
+
+.price {
+    grid-row: 3;
+}
+
+.cart {
+    grid-row: 4;
+    display: grid;
+}
+
+#add-cart {
+    justify-content: center;
+    margin: .25rem;
+    border-radius: 5px;
+    background-color: rgb(254, 254, 130);
+}
