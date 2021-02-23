@@ -45,6 +45,7 @@ a {
     top: 8rem;
     display: grid;
     grid-template-rows: auto auto auto auto auto auto;
+    width: 100%;
 }
 
 #meat {
