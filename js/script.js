@@ -1,7 +1,7 @@
 
 const items = {
     meat: [
-        {name:"	meat	", price: "	200	", id: 100, img: "	./media/meat/1.jpg	"}	
+        {name:"	meat	", price: 200, id: 100, img: "	./media/meat/1.jpg	"}	
     ],
     seafood: [
         {
