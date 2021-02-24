@@ -42,16 +42,73 @@ a {
 
 #items {
     position: absolute;
-    top: 8rem;
+    left: -.5rem;
     display: grid;
     grid-template-rows: auto auto auto auto auto auto;
     width: 100%;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    width: 100%;
+    background-color: black;
+}
+
+#home {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
 }
 
 #meat {
     background-color: rgb(238, 238, 238);
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#seafood {
+    background-color: rgb(254, 235, 255);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#vegetables {
+    background-color: rgb(255, 232, 242);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#fruits {
+    background-color: rgb(239, 255, 239);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#cart {
+    background-color: rgb(201, 190, 255);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#faq {
+    background-color: rgb(239, 255, 239);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
 }
 
 .card {
@@ -72,6 +129,17 @@ a {
 
 .picture {
     grid-row: 1;
+    height: 9rem;
+    width: 10rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.picture:hover {
+    height: 15rem;
+    width: 15rem;
+    z-index: 1000;
 }
 
 .item-name {
@@ -87,9 +155,13 @@ a {
     display: grid;
 }
 
-#add-cart {
+.add-cart {
     justify-content: center;
     margin: .25rem;
     border-radius: 5px;
     background-color: rgb(254, 254, 130);
 }
+
+/* SHOPPING CART */
+
+
