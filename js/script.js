@@ -6,7 +6,7 @@ const items = {
     seafood: [
         {
             name: "seafood",
-            price: "200",
+            price: 200,
             id: "200",
             img: "./media/seafood/1.jpg"
         }
@@ -14,7 +14,7 @@ const items = {
     vegetables: [
         {
             name: "vegetables",
-            price: "200",
+            price: 200,
             id: "300",
             img: "./media/vegetables/1.jpg"
         }
@@ -22,7 +22,7 @@ const items = {
     fruits: [
         {
             name: "fruits",
-            price: "200",
+            price: 200,
             id: "400",
             img: "./media/fruits/1.jpg"
         }
@@ -212,6 +212,8 @@ function loadCart() {
     
     console.log('displaying cart');
 
+    var totalPrice = 0;
+
     const cartContainerEl = document.getElementById("cart-container");
 
     for (var i = 0; i < cart.length; i++ ) {
@@ -241,8 +243,18 @@ function loadCart() {
     shoppingListEl.appendChild(cartNameEl);
     shoppingListEl.appendChild(cartPriceEl);
     shoppingListEl.appendChild(removeCartEl);
-	
+
+    totalPrice += cart[i].price;
     }
+    console.log(totalPrice);
+
+    const totalPriceEl = document.getElementById("price-container");
+
+    const addPriceEl = document.createElement("h1");
+    addPriceEl.innerHTML = "Total: RM " + totalPrice;
+
+    totalPriceEl.appendChild(addPriceEl);
+
 }
 
 function removeCart(index) {
