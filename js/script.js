@@ -245,7 +245,12 @@ function loadCart() {
 }
 
 function removeCart(index) {
-    console.log("Item: " + cart[index].name + " removed from Cart!")
+    console.log("Item: " + cart[index].name + "and " + "index: " + index + " removed from Cart!")
+
+    cart.splice(index, 1);
+
+    saveStorage();
+    location.reload();
 }
 
 generateMeat();
