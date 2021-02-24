@@ -203,17 +203,49 @@ function saveCart(item) {
         cart.push(items.fruits[fruitsArr])
     }
     
-    console.log("add to card clicked");
     saveStorage();
     console.table(cart);
 }
 
 function loadCart() {
-
+    
     console.log('displaying cart');
 
-					
-    
+    const cartContainerEl = document.getElementById("cart-container");
+
+    for (var i = 0; i < cart.length; i++ ) {
+
+    const shoppingListEl = document.createElement("div");
+    shoppingListEl.setAttribute("class", "shopping-cart-list");
+    const miniPictureEl = document.createElement("img");
+    miniPictureEl.setAttribute("class", "mini-picture");
+    miniPictureEl.setAttribute("src", cart[i].img)
+
+    const cartNameEl = document.createElement("div");
+    cartNameEl.setAttribute("class", "cart-item-name");
+    cartNameEl.innerHTML = cart[i].name;
+
+    const cartPriceEl = document.createElement("div");
+    cartPriceEl.setAttribute("class", "cart-item-price");
+    cartPriceEl.innerHTML = "RM: " + cart[i].price;
+
+    const removeCartEl = document.createElement("button");
+    removeCartEl.setAttribute("class", "remove-from-cart");
+    removeCartEl.setAttribute("id", i)
+    removeCartEl.setAttribute("onclick", "removeCart(this.id)")
+    removeCartEl.innerHTML = "remove"
+
+    cartContainerEl.appendChild(shoppingListEl);
+    shoppingListEl.appendChild(miniPictureEl);
+    shoppingListEl.appendChild(cartNameEl);
+    shoppingListEl.appendChild(cartPriceEl);
+    shoppingListEl.appendChild(removeCartEl);
+	
+    }
+}
+
+function removeCart(index) {
+    console.log("Item: " + cart[index].name + " removed from Cart!")
 }
 
 generateMeat();
