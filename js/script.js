@@ -204,6 +204,7 @@ function saveCart(item) {
     }
     
     saveStorage();
+    location.reload();
     console.table(cart);
 }
 
