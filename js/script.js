@@ -1,25 +1,24 @@
 
-const items = {
-    meat: [
-        {name:"	meat	", price: 200, id: "100", img: "	./media/meat/1.jpg	"}	
-    ],
-    seafood: [
+const meat = JSON.parse(localStorage.getItem("meat")) ||  [
+        {name:"meat", price: 200, id: "100", img: "./media/meat/1.jpg"}	
+    ]
+const seafood = JSON.parse(localStorage.getItem("seafood")) ||  [
         {
             name: "seafood",
             price: 200,
             id: "200",
             img: "./media/seafood/1.jpg"
         }
-    ],
-    vegetables: [
+    ]
+const vegetables = JSON.parse(localStorage.getItem("vegetables")) ||  [
         {
             name: "vegetables",
             price: 200,
             id: "300",
             img: "./media/vegetables/1.jpg"
         }
-    ],
-    fruits: [
+    ]
+const fruits = JSON.parse(localStorage.getItem("fruits")) ||  [
         {
             name: "fruits",
             price: 200,
@@ -27,148 +26,86 @@ const items = {
             img: "./media/fruits/1.jpg"
         }
     ]
+
+const foodArr = [
+    "meat", "seafood", "vegetables", "fruits"
+    ];
+
+function displayLoop() {
+
+    if (meat) { generateFoodList(meat); }
+    if (seafood) { generateFoodList(seafood); }
+    if (vegetables) { generateFoodList(vegetables); }
+    if (fruits) { generateFoodList(fruits); }  
 }
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function generateMeat() {
+function generateFoodList(typeArr) {
 
-    console.log('displaying meat');
+        for (var i = 0; i < typeArr.length; i++) {
 
-    for (var i = 0; i < items.meat.length; i++) {
+        const foodEl = document.getElementById("" + typeArr[i].name + "");
+        const cardEl = document.createElement("div");
+        cardEl.setAttribute("class", "card");
+        cardEl.setAttribute("id", typeArr + "-" + typeArr[i].id)
+        const pictureEl = document.createElement("img");
+        pictureEl.setAttribute("class", "picture");
+        pictureEl.setAttribute("src", typeArr[i].img)
+        pictureEl.setAttribute("id", "myImg");
+        pictureEl.setAttribute("alt", typeArr[i].name);
+        pictureEl.setAttribute("style", "width:100%; max-width:300px");
 
-    const meatEl = document.getElementById("meat");
-    const cardEl = document.createElement("div");
-    cardEl.setAttribute("class", "card");
-    const pictureEl = document.createElement("img");
-    pictureEl.setAttribute("class", "picture");
-    pictureEl.setAttribute("src", items.meat[i].img)
-    const nameEl = document.createElement("div");
-    nameEl.setAttribute("class", "name");
-    nameEl.innerHTML = items.meat[i].name;
-    const priceEl = document.createElement("div");
-    priceEl.setAttribute("class", "price")
-    priceEl.innerHTML = "RM: " + items.meat[i].price;
-    const cartEl = document.createElement("div");
-    cartEl.setAttribute("class", "cart");
-    const addcartEl = document.createElement("button");
-    addcartEl.setAttribute("id", items.meat[i].id);
-    addcartEl.setAttribute("class", "add-cart");
-    addcartEl.setAttribute("onclick", "saveCart(this.id)")
-    addcartEl.innerHTML = "ADD TO CART"
+        //create picture MODAL
+        const modalEl = document.createElement("div");
+        modalEl.setAttribute("id", "myModal-"+typeArr[i].id);
+        modalEl.setAttribute("class", "modal");
+        const modalCloseEl = document.createElement("span");
+        modalCloseEl.setAttribute("class", "close");
+        modalCloseEl.setAttribute("id", "closeModal");
+        modalCloseEl.setAttribute("onclick", "closeModal(this.id)")
+        modalCloseEl.innerHTML = "&times;";
+        const modalImageEl = document.createElement("img");
+        modalImageEl.setAttribute("class", "modal-content");
+        modalImageEl.setAttribute("id", "img01");
+        const modalCaptionEl = document.createElement("div");
+        modalCaptionEl.setAttribute("id", "caption");
 
-    meatEl.appendChild(cardEl);
-    cardEl.appendChild(pictureEl);
-    cardEl.appendChild(nameEl);
-    cardEl.appendChild(priceEl);
-    cardEl.appendChild(cartEl);
-    cartEl.appendChild(addcartEl);
+        const nameEl = document.createElement("div");
+        nameEl.setAttribute("class", "name");
+        nameEl.innerHTML = typeArr[i].name;
+        const priceEl = document.createElement("div");
+        priceEl.setAttribute("class", "price")
+        priceEl.innerHTML = "RM: " + typeArr[i].price;
+        const cartEl = document.createElement("div");
+        cartEl.setAttribute("class", "cart");
+        const addcartEl = document.createElement("button");
+        addcartEl.setAttribute("id", typeArr[i].id);
+        addcartEl.setAttribute("class", "add-cart");
+        addcartEl.setAttribute("onclick", "saveCart(this.id)")
+        addcartEl.innerHTML = "ADD TO CART"
+
+        foodEl.appendChild(cardEl);
+        cardEl.appendChild(pictureEl);
+        cardEl.appendChild(modalEl);
+        modalEl.appendChild(modalCloseEl);
+        modalEl.appendChild(modalImageEl);
+        modalEl.appendChild(modalCaptionEl);
+        cardEl.appendChild(nameEl);
+        cardEl.appendChild(priceEl);
+        cardEl.appendChild(cartEl);
+        cartEl.appendChild(addcartEl);
+
+        pictureEl.onclick = function(){
+            modalEl.style.display = "block";
+            modalImageEl.src = this.src;
+            modalCaptionEl.innerHTML = this.alt;
+        }
     }
 }
 
-function generateSeafood() {
-
-    console.log('displaying seafood');
-
-    for (var i = 0; i < items.vegetables.length; i++) {
-
-    const seafoodEl = document.getElementById("seafood");
-    const cardEl = document.createElement("div");
-    cardEl.setAttribute("class", "card");
-    const pictureEl = document.createElement("img");
-    pictureEl.setAttribute("class", "picture");
-    pictureEl.setAttribute("src", items.seafood[i].img)
-    const nameEl = document.createElement("div");
-    nameEl.setAttribute("class", "name");
-    nameEl.innerHTML = items.seafood[i].name;
-    const priceEl = document.createElement("div");
-    priceEl.setAttribute("class", "price")
-    priceEl.innerHTML = "RM: " + items.seafood[i].price;
-    const cartEl = document.createElement("div");
-    cartEl.setAttribute("class", "cart");
-    const addcartEl = document.createElement("button");
-    addcartEl.setAttribute("id", items.seafood[i].id);
-    addcartEl.setAttribute("class", "add-cart");
-    addcartEl.setAttribute("onclick", "saveCart(this.id)")
-    addcartEl.innerHTML = "ADD TO CART"
-
-    seafoodEl.appendChild(cardEl);
-    cardEl.appendChild(pictureEl);
-    cardEl.appendChild(nameEl);
-    cardEl.appendChild(priceEl);
-    cardEl.appendChild(cartEl);
-    cartEl.appendChild(addcartEl);
-    }
-}
-
-function generateVegetables() {
-
-    console.log('displaying vegetables');
-
-    for (var i = 0; i < items.vegetables.length; i++) {
-
-    const vegetablesEl = document.getElementById("vegetables");
-    const cardEl = document.createElement("div");
-    cardEl.setAttribute("class", "card");
-    const pictureEl = document.createElement("img");
-    pictureEl.setAttribute("class", "picture");
-    pictureEl.setAttribute("src", items.vegetables[i].img)
-    const nameEl = document.createElement("div");
-    nameEl.setAttribute("class", "name");
-    nameEl.innerHTML = items.vegetables[i].name;
-    const priceEl = document.createElement("div");
-    priceEl.setAttribute("class", "price")
-    priceEl.innerHTML = "RM: " + items.vegetables[i].price;
-    const cartEl = document.createElement("div");
-    cartEl.setAttribute("class", "cart");
-    const addcartEl = document.createElement("button");
-    addcartEl.setAttribute("id", items.vegetables[i].id);
-    addcartEl.setAttribute("class", "add-cart");
-    addcartEl.setAttribute("onclick", "saveCart(this.id)")
-    addcartEl.innerHTML = "ADD TO CART"
-
-    vegetablesEl.appendChild(cardEl);
-    cardEl.appendChild(pictureEl);
-    cardEl.appendChild(nameEl);
-    cardEl.appendChild(priceEl);
-    cardEl.appendChild(cartEl);
-    cartEl.appendChild(addcartEl);
-    }
-}
-
-function generateFruits() {
-
-    console.log('displaying fruits');
-
-    for (var i = 0; i < items.fruits.length; i++) {
-
-    const fruitsEl = document.getElementById("fruits");
-    const cardEl = document.createElement("div");
-    cardEl.setAttribute("class", "card");
-    const pictureEl = document.createElement("img");
-    pictureEl.setAttribute("class", "picture");
-    pictureEl.setAttribute("src", items.fruits[i].img)
-    const nameEl = document.createElement("div");
-    nameEl.setAttribute("class", "name");
-    nameEl.innerHTML = items.fruits[i].name;
-    const priceEl = document.createElement("div");
-    priceEl.setAttribute("class", "price")
-    priceEl.innerHTML = "RM: " + items.fruits[i].price;
-    const cartEl = document.createElement("div");
-    cartEl.setAttribute("class", "cart");
-    const addcartEl = document.createElement("button");
-    addcartEl.setAttribute("id", items.fruits[i].id);
-    addcartEl.setAttribute("class", "add-cart");
-    addcartEl.setAttribute("onclick", "saveCart(this.id)")
-    addcartEl.innerHTML = "ADD TO CART"
-
-    fruitsEl.appendChild(cardEl);
-    cardEl.appendChild(pictureEl);
-    cardEl.appendChild(nameEl);
-    cardEl.appendChild(priceEl);
-    cardEl.appendChild(cartEl);
-    cartEl.appendChild(addcartEl);
-    }
+function closeModal() {
+    location.reload();
 }
 
 function saveStorage() {
@@ -187,20 +124,20 @@ function saveCart(item) {
     const fruitsArr = item - 400;
 
     if (item >= 100 && item <= 199) {
-        alert("Item: " + items.meat[meatArr].name + " has been added to your cart")
-        cart.push(items.meat[meatArr])
+        alert("Item: " + meat[meatArr].name + " has been added to your cart")
+        cart.push(meat[meatArr])
     } else if
     (item >= 200 && item <= 299) {
-        alert("Item: " + items.seafood[seafoodArr].name + " has been added to your cart")
-        cart.push(items.seafood[seafoodArr])
+        alert("Item: " + seafood[seafoodArr].name + " has been added to your cart")
+        cart.push(seafood[seafoodArr])
     } else if 
     (item >= 300 && item <= 399) {
-        alert("Item: " + items.vegetables[vegetablesArr].name + " has been added to your cart")
-        cart.push(items.vegetables[vegetablesArr])
+        alert("Item: " + vegetables[vegetablesArr].name + " has been added to your cart")
+        cart.push(vegetables[vegetablesArr])
     } else if 
     (item >= 400 && item <= 499) {
-        alert("Item: " + items.fruits[fruitsArr].name + " has been added to your cart")
-        cart.push(items.fruits[fruitsArr])
+        alert("Item: " + fruits[fruitsArr].name + " has been added to your cart")
+        cart.push(fruits[fruitsArr])
     }
     
     saveStorage();
@@ -211,6 +148,7 @@ function saveCart(item) {
 function loadCart() {
     
     console.log('displaying cart');
+    console.table(cart);
 
     var totalPrice = 0;
 
@@ -226,6 +164,7 @@ function loadCart() {
 
     const cartNameEl = document.createElement("div");
     cartNameEl.setAttribute("class", "cart-item-name");
+    cartNameEl.setAttribute("onclick", "location.href='#"+cart[i].id+"';");
     cartNameEl.innerHTML = cart[i].name;
 
     const cartPriceEl = document.createElement("div");
@@ -266,8 +205,5 @@ function removeCart(index) {
     location.reload();
 }
 
-generateMeat();
-generateSeafood();
-generateVegetables();
-generateFruits();
+displayLoop();
 loadCart();
