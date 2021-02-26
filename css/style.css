@@ -1,0 +1,328 @@
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.top-grid {
+    display: grid;
+    grid-template-rows: 5rem 4rem;
+    height: 8 rem;
+    background-color: rgb(255, 157, 157);
+}
+
+.logo {
+    grid-row: 1 / span 1;
+    text-align: center;
+}
+
+.nav {
+    grid-row: 2 / span 1;
+    top: 5rem;
+    position: absolute;
+    right: 1rem;
+}
+
+.ul-nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none
+}
+
+a {
+    text-decoration: none;
+}
+
+.li-nav {
+    padding-left: 1rem;
+}
+
+/* HOME */
+
+.poster {
+    height: 30rem;
+    width: 30rem;
+    background-color: rgb(255, 255, 255);
+    margin-top: 4rem;
+}
+
+/* CARD */
+
+#items {
+    position: absolute;
+    left: -.5rem;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    width: 100%;
+    background-color: black;
+}
+
+#home {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#meat {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#seafood {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#vegetables {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#fruits {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#cart {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+#faq {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 8rem;
+}
+
+.card {
+    width: 15rem;
+    height: 18rem;
+    background-color: rgb(238, 238, 255);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgb(193, 193, 193);
+    display: grid;
+    grid-template-rows: 55% 15% 15% 15%;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px black;
+}
+
+.picture {
+    grid-row: 1;
+    height: 9rem;
+    width: 10rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-name {
+    grid-row: 2;
+}
+
+.price {
+    grid-row: 3;
+}
+
+.cart {
+    grid-row: 4;
+    display: grid;
+}
+
+.add-cart {
+    justify-content: center;
+    margin: .25rem;
+    border-radius: 5px;
+    background-color: rgb(254, 254, 130);
+}
+
+.add-cart:hover {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* SHOPPING CART */
+
+#cart-container {
+    width: 90%;
+    display: grid;
+    grid-template-rows: auto;
+    padding-top: 2rem;
+}
+
+.shopping-cart-list {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    height: 4rem;
+}
+
+.mini-picture {
+    grid-column: 1;
+    height: 3rem;
+    padding: .5rem;
+}
+
+.cart-item-name {
+    grid-column: 2;
+    padding-top: 1rem;
+}
+
+.cart-item-price {
+    grid-column: 3;
+    padding-top: 1rem;
+}
+
+.remove-from-cart {
+    grid-column: 4;
+    height: 2rem;
+    background-color: rgb(255, 179, 179);
+    font-weight: bold;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.remove-from-cart:hover {
+    box-shadow: 0 0 5px rgb(154, 154, 154);
+    background-color: rgb(255, 101, 101);
+}
+
+#price-container {
+    grid-row: 2;
+}
+
+.send-order {
+    padding: 1rem;
+    margin-left: 2.5rem;
+    border-radius: 10px;
+    background-color: rgb(254, 254, 130);
+}
+
+.send-order:hover {
+    box-shadow: 0 0 10px rgb(165, 165, 165);
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #myImg:hover {opacity: 0.7;}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 400px){
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .card {
+        width: 10rem;
+        height: 15rem;
+    }
+
+    #myImg {
+        height: 8rem;
+        }
+
+    .send-order {
+        margin-left: 1rem;
+    }
+  }
