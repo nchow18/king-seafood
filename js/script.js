@@ -158,7 +158,7 @@ function generateFoodList(typeArr) {
         modalEl.setAttribute("class", "modal");
         const modalCloseEl = document.createElement("span");
         modalCloseEl.setAttribute("class", "close");
-        modalCloseEl.setAttribute("id", "closeModal");
+        modalCloseEl.setAttribute("id", typeArr[i].id);
         modalCloseEl.setAttribute("onclick", "closeModal(this.id)")
         modalCloseEl.innerHTML = "&times;";
         const modalImageEl = document.createElement("img");
@@ -200,8 +200,15 @@ function generateFoodList(typeArr) {
     }
 }
 
-function closeModal() {
-    location.reload();
+function closeModal(id) {
+
+    const close = document.getElementById(id);
+    const modalEl = document.getElementById("myModal-"+id);
+
+    close.onclick = function() {
+        console.log('Closing');
+        modalEl.style.display = "none";
+    }
 }
 
 function saveStorage() {
