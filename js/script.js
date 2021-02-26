@@ -332,16 +332,16 @@ function messageCart() {
 
     for (var i = 0; i < cart.length; i++) {
         totalPrice += cart[i].price;
-        message += "\n ===== Item:"+[i+1]+"====="+"\n *Item:* "+cart[i].name+", *Price:* "+cart[i].price+" ";
+        message += "\n %0a ===== Item:"+[i+1]+"====="+"\n %0a *Item:* "+cart[i].name+", *Price:* "+cart[i].price+" ";
     }
 
-    const displayMessage = "*First Name:* "+firstName+", *Last Name:* "+lastName+message + "\n ===" + " *Total Price:* " + totalPrice;
+    const displayMessage = "*First Name:* "+firstName+", *Last Name:* "+lastName+message + "\n %0a ===" + " *Total Price:* " + totalPrice;
 
     console.log(displayMessage);
 
     const send = displayMessage;
 
-    window.location.href = 'https://wa.me/16472986836?text='+send;
+    window.location.href = 'https://wa.me/60164223018?text='+send;
 }
 
 displayLoop();
