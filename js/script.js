@@ -332,10 +332,10 @@ function messageCart() {
 
     for (var i = 0; i < cart.length; i++) {
         totalPrice += cart[i].price;
-        message += "\n ===== Item:"+[i+1]+"====="+"\n *Item: "+cart[i].name+", *Price:* "+cart[i].price+" ";
+        message += "\n ===== Item:"+[i+1]+"====="+"\n *Item:* "+cart[i].name+", *Price:* "+cart[i].price+" ";
     }
 
-    const displayMessage = "*First Name:* "+firstName+", *Last Name:* "+lastName+message + "\n ===" + " Total Price: " + totalPrice;
+    const displayMessage = "*First Name:* "+firstName+", *Last Name:* "+lastName+message + "\n ===" + " *Total Price:* " + totalPrice;
 
     console.log(displayMessage);
 
