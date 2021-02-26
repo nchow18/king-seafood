@@ -183,7 +183,7 @@ a {
     border: 1px solid black;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    height: 4rem;
+    height: 5rem;
 }
 
 .mini-picture {
@@ -324,5 +324,9 @@ a {
 
     .send-order {
         margin-left: 1rem;
+    }
+
+    .shopping-cart-list {
+        height: 6rem;
     }
   }
