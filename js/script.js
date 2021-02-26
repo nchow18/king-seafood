@@ -145,7 +145,6 @@ function generateFoodList(typeArr) {
         const foodEl = document.getElementById("" + typeArr[i].category + "");
         const cardEl = document.createElement("div");
         cardEl.setAttribute("class", "card");
-        cardEl.setAttribute("id", typeArr + "-" + typeArr[i].id)
         const pictureEl = document.createElement("img");
         pictureEl.setAttribute("class", "picture");
         pictureEl.setAttribute("src", typeArr[i].img)
