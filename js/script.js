@@ -206,7 +206,6 @@ function closeModal(id) {
     const modalEl = document.getElementById("myModal-"+id);
 
     close.onclick = function() {
-        console.log('Closing');
         modalEl.style.display = "none";
     }
 }
@@ -333,7 +332,7 @@ function messageCart() {
 
     for (var i = 0; i < cart.length; i++) {
         totalPrice += cart[i].price;
-        message += "\n ===== Item:"+[i+1]+"====="+"\n *Item:& "+cart[i].name+", *Price:* "+cart[i].price+" ";
+        message += "\n ===== Item:"+[i+1]+"====="+"\n *Item: "+cart[i].name+", *Price:* "+cart[i].price+" ";
     }
 
     const displayMessage = "*First Name:* "+firstName+", *Last Name:* "+lastName+message + "\n ===" + " Total Price: " + totalPrice;
