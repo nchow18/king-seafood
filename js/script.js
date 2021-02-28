@@ -128,6 +128,10 @@ const foodArr = [
     "meat", "seafood", "vegetables", "fruits"
     ];
 
+var totalPrice = 0;
+
+console.log(totalPrice);
+
 function displayLoop() {
 
     if (meat) { generateFoodList(meat); }
@@ -243,23 +247,19 @@ function saveCart(item) {
     }
     
     saveStorage();
-    location.reload();
+    updateCart(item);
     console.table(cart);
 }
 
-function loadCart() {
-    
-    console.log('displaying cart');
-    console.table(cart);
+function updateCart(item) {
 
-    var totalPrice = 0;
+    const i = cart.length - 1;
 
     const cartContainerEl = document.getElementById("cart-container");
 
-    for (var i = 0; i < cart.length; i++ ) {
-
     const shoppingListEl = document.createElement("div");
     shoppingListEl.setAttribute("class", "shopping-cart-list");
+    shoppingListEl.setAttribute("id", "item-"+item);
     const miniPictureEl = document.createElement("img");
     miniPictureEl.setAttribute("class", "mini-picture");
     miniPictureEl.setAttribute("src", cart[i].img)
@@ -275,7 +275,50 @@ function loadCart() {
 
     const removeCartEl = document.createElement("button");
     removeCartEl.setAttribute("class", "remove-from-cart");
-    removeCartEl.setAttribute("id", i)
+    removeCartEl.setAttribute("id", cart[i].id)
+    removeCartEl.setAttribute("onclick", "removeCart(this.id)")
+    removeCartEl.innerHTML = "remove"
+
+    cartContainerEl.appendChild(shoppingListEl);
+    shoppingListEl.appendChild(miniPictureEl);
+    shoppingListEl.appendChild(cartNameEl);
+    shoppingListEl.appendChild(cartPriceEl);
+    shoppingListEl.appendChild(removeCartEl);
+
+    totalPrice += cart[i].price;
+
+    const price = document.getElementById("total-price")
+    price.innerHTML = "Total: RM " + totalPrice;
+}
+
+function loadCart() {
+    
+    console.log('displaying cart');
+    console.table(cart);
+
+    const cartContainerEl = document.getElementById("cart-container");
+
+    for (var i = 0; i < cart.length; i++ ) {
+
+    const shoppingListEl = document.createElement("div");
+    shoppingListEl.setAttribute("class", "shopping-cart-list");
+    shoppingListEl.setAttribute("id", "item-"+cart[i].id);
+    const miniPictureEl = document.createElement("img");
+    miniPictureEl.setAttribute("class", "mini-picture");
+    miniPictureEl.setAttribute("src", cart[i].img)
+
+    const cartNameEl = document.createElement("div");
+    cartNameEl.setAttribute("class", "cart-item-name");
+    cartNameEl.setAttribute("onclick", "location.href='#"+cart[i].id+"';");
+    cartNameEl.innerHTML = cart[i].name;
+
+    const cartPriceEl = document.createElement("div");
+    cartPriceEl.setAttribute("class", "cart-item-price");
+    cartPriceEl.innerHTML = "RM: " + cart[i].price;
+
+    const removeCartEl = document.createElement("button");
+    removeCartEl.setAttribute("class", "remove-from-cart");
+    removeCartEl.setAttribute("id", cart[i].id)
     removeCartEl.setAttribute("onclick", "removeCart(this.id)")
     removeCartEl.innerHTML = "remove"
 
@@ -292,6 +335,7 @@ function loadCart() {
     const totalPriceEl = document.getElementById("price-container");
 
     const addPriceEl = document.createElement("h1");
+    addPriceEl.setAttribute("id", "total-price");
     addPriceEl.innerHTML = "Total: RM " + totalPrice;
 
     const addButtonEl = document.createElement("button");
@@ -303,13 +347,25 @@ function loadCart() {
     totalPriceEl.appendChild(addButtonEl);
 }
 
-function removeCart(index) {
-    console.log("Item: " + cart[index].name + "and " + "index: " + index + " removed from Cart!")
+function removeCart(id) {
+
+    console.log('Cart ID: '+ id + ' removed!');
+
+    index = cart.findIndex(x => x.id === id)
+
+    console.log(index);
+
+    const cartItem = document.getElementById("item-"+cart[index].id);
+    cartItem.remove();
+
+   totalPrice -= cart[index].price;
+
+    const price = document.getElementById("total-price");
+    price.innerHTML = "Total: RM "+totalPrice;
 
     cart.splice(index, 1);
 
     saveStorage();
-    location.reload();
 }
 
 function messageCart() {
