@@ -182,7 +182,7 @@ a {
 .shopping-cart-list {
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 20% 25% 20% 10% 25%;
     height: 5rem;
 }
 
@@ -202,8 +202,23 @@ a {
     padding-top: 1rem;
 }
 
-.remove-from-cart {
+.cart-quantity-grid {
+    display: grid;
     grid-column: 4;
+    padding: 1rem 3rem 1rem 3rem;
+    grid-template-rows: 50% 50%;
+}
+
+.cart-item-quantity {
+    grid-row: 1 / span 1;
+}
+
+.quantity-submit {
+    grid-row: 2 / span 1;
+}
+
+.remove-from-cart {
+    grid-column: 5;
     height: 2rem;
     background-color: rgb(255, 179, 179);
     font-weight: bold;
@@ -218,9 +233,16 @@ a {
 
 #price-container {
     grid-row: 2;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+#total-price {
+    grid-row: 1 / span 1;
 }
 
 .send-order {
+    grid-row: 2 / span 1;
     padding: 1rem;
     margin-left: 2.5rem;
     border-radius: 10px;
