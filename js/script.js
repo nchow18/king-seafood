@@ -441,6 +441,12 @@ function messageCart() {
 
     var totalPrice = 0;
 
+    for (var k = 0; k < cart.length; k++) {
+        totalPrice += cart[k].quantity * cart[k].price;
+    }
+
+    console.log(totalPrice);
+
     const firstName = window.prompt('Enter your FIRST name');
 
     if (!firstName) {
@@ -456,7 +462,6 @@ function messageCart() {
     var message = "";
 
     for (var i = 0; i < cart.length; i++) {
-        totalPrice += cart[i].price;
         message += "\n %0a ===== Item:"+[i+1]+"====="+"\n %0a *Item:* "+cart[i].name+", *Quantity:* "+cart[i].quantity+", *Price:* "+cart[i].price+" ";
     }
 
