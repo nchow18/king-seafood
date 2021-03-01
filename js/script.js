@@ -429,11 +429,10 @@ function removeCart(id) {
     const cartItem = document.getElementById("item-"+cart[index].id);
     cartItem.remove();
 
-    updatePrice()
-
     cart.splice(index, 1);
 
     saveStorage();
+    updatePrice()
 }
 
 function messageCart() {
