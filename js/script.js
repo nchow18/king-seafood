@@ -437,6 +437,8 @@ function removeCart(id) {
 
 function messageCart() {
 
+    alert(" We provide next day delivery for MOST areas in Penang Island 🌴 from Mondays to Saturdays 9am-5pm. \n Orders RM150 and above free delivery for Penang area (Less than RM150 delivery fee is RM10) \n Pick up option is also available at 205, Jalan Perak 🏠  \n Payment method: Bank transfer (preferred) / TNG (please request for barcode) / COD (exact change only) \n Banking details will be provided in INVOICE after order is confirmed 🙏🏽");
+
     var totalPrice = 0;
 
     const firstName = window.prompt('Enter your FIRST name');
@@ -455,10 +457,10 @@ function messageCart() {
 
     for (var i = 0; i < cart.length; i++) {
         totalPrice += cart[i].price;
-        message += "\n %0a ===== Item:"+[i+1]+"====="+"\n %0a *Item:* "+cart[i].name+", *Price:* "+cart[i].price+" ";
+        message += "\n %0a ===== Item:"+[i+1]+"====="+"\n %0a *Item:* "+cart[i].name+", *Quantity:* "+cart[i].quantity+", *Price:* "+cart[i].price+" ";
     }
 
-    const displayMessage = "*First Name:* "+firstName+", *Last Name:* "+lastName+message + "\n %0a ===" + " *Total Price:* " + totalPrice;
+    const displayMessage = "*First Name:* "+firstName+",\n %0a*Last Name:* "+lastName+",\n %0a "+message + "\n %0a ===" + " *Total Price:* " + totalPrice;
 
     console.log(displayMessage);
 
